@@ -1684,6 +1684,7 @@ static void stratum_gen_work(struct stratum_ctx *sctx, struct work *work)
 				work->data[i] = 0;
 			work->data[37] = (rand()*4) << 8;
 			sctx->bloc_height = work->data[32];
+			work->data[44] = ((uint32_t*)(sctx->job.xnonce2 + sctx->xnonce2_size))[0];
 			//applog_hex(work->data, 180);
 			//applog_hex(&work->data[36], 36);
 		} else {
